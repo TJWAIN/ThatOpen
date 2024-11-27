@@ -1,3 +1,4 @@
+import { ErrorMessage } from './ErrorMessage';
 import { IProject, Project } from "./Project"
 
 export class ProjectsManager {
@@ -30,6 +31,8 @@ export class ProjectsManager {
       if(!(projectsPage && detailsPage)){return}
       projectsPage.style.display = "none"
       detailsPage.style.display = "flex"
+
+      this.setDetailsPage(project)
     })
 
     const btnProjects = document.getElementById("btn-projects")
@@ -46,6 +49,30 @@ export class ProjectsManager {
     this.ui.append(project.ui)
     this.list.push(project)	
     return project
+  }
+
+  private setDetailsPage(project: Project) {
+    const detailsPage = document.getElementById("project-details") as HTMLDivElement
+    if (!detailsPage) {return}
+    const name = detailsPage.querySelector("[data-project-info='name']")
+    if (name) {name.textContent = project.name}
+    const description = detailsPage.querySelector("[data-project-info='description']")
+    if (description) {description.textContent = project.description}
+    const status = detailsPage.querySelector("[data-project-info='status']")
+    if (status) {status.textContent = project.status}
+    const cost = detailsPage.querySelector("[data-project-info='cost']")
+    if (cost) {cost.textContent = project.cost.toString()}
+    const role = detailsPage.querySelector("[data-project-info='role']")
+    if (role) {role.textContent = project.userRole} 
+    const date = detailsPage.querySelector("[data-project-info='date']")
+    if (date) {
+      let dateString = project.finishDate
+      let dateObj = new Date(dateString)
+      date.textContent = dateObj.toDateString()
+    }
+    const progress = detailsPage.querySelector("[data-project-info='progress']")
+    if (progress)
+      progress.textContent = `${project.progress * 100}%`
   }
 
   getProject(id: string) {
