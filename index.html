@@ -4,43 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:wght@400&display=swap" >
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <aside id="sidebar">
     <img id="company-logo" src="./assets/company-logo.svg" alt="Construction Company">
     <ul id="nav-buttons">
-      <li><span class="material-icons-round">apartment</span>Projects</li>
-      <li><span class="material-icons-round">people</span>Users</li>
+      <li id="btn-projects"><span class="material-symbols-rounded">apartment</span>Projects</li>
+      <li><span class="material-symbols-rounded">people</span>Users</li>
     </ul>
   </aside>
   <main id="content">
     <div class="page" id="projects-page" style="display: flex;">
       <dialog id="new-project-modal">
-        <form>
+        <form id="new-project-form">
           <h2>New Project</h2>
           <div class="input-list">
             <div class="form-field-container">
-              <label><span class="material-icons-round">apartment</span>Name</label>
-              <input type="text" placeholder="What's the name of your project?">
+              <label><span class="material-symbols-rounded">apartment</span>Name</label>
+              <input name="name" type="text" placeholder="What's the name of your project?">
               <p style="color: gray; font-size: var(--font-sm); margin-top: 5px; font-style: italic;">TIP: Give it a short name</p>
             </div>
             <div class="form-field-container">
-              <label><span class="material-icons-round">subject</span>Description</label>
-              <textarea cols="30" rows="5" placeholder="Give your project a nice description! So people is jealous about it."></textarea>
+              <label><span class="material-symbols-rounded">subject</span>Description</label>
+              <textarea name="description" cols="30" rows="5" placeholder="Give your project a nice description! So people is jealous about it."></textarea>
             </div>
             <div class="form-field-container">
-              <label><span class="material-icons-round">person</span>Role</label>
-              <select>
+              <label><span class="material-symbols-rounded">person</span>Role</label>
+              <select name="userRole">
                 <option>Architect</option>
                 <option>Engineer</option>
                 <option>Developer</option>
               </select>
             </div>
             <div class="form-field-container">
-              <label><span class="material-icons-round">not_listed_location</span>Status</label>
-              <select>
+              <label><span class="material-symbols-rounded">not_listed_location</span>Status</label>
+              <select name="status">
                 <option>Pending</option>
                 <option>Active</option>
                 <option>Finished</option>
@@ -48,22 +48,24 @@
             </div>
             <div class="form-field-container">
               <label for="finishDate">
-                <span class="material-icons-round">calendar_month</span>
+                <span class="material-symbols-rounded">calendar_month</span>
                 Finish Date
               </label>
-              <input type="date" name="finishDate"></input>
+              <input name="finishDate" type="date"></input>
             </div>
             <div style="display: flex; margin: 10px 0px 10px auto; column-gap: 10px;">
-              <button style="background-color: transparent;">Cancel</button>
-              <button style="background-color: rgb(18, 145, 18);">Accept</button>
+              <button type="button" style="background-color: transparent;">Cancel</button>
+              <button type="submit" style="background-color: rgb(18, 145, 18);">Accept</button>
             </div>
           </div>
         </form>
       </dialog>
       <header>
         <h2>Projects</h2>
-        <div>
-          <button id = "new-project-btn"><span class="material-icons-round">add</span>New Project</button>
+        <div style="display: flex; align-items: center; column-gap: 15px;">
+          <button id="import-projects-btn" class="material-symbols-rounded">upload</button> 
+          <button id="export-projects-btn" class="material-symbols-rounded">download</button>
+          <button id = "new-project-btn"><span class="material-symbols-rounded">add</span>New Project</button>
         </div>
       </header>
       <div id="projects-list">
@@ -96,14 +98,14 @@
         </div>
       </div>
     </div>
-    <div class="page" id="project-details" style="display: none">
+    <div class="page" id="project-details" style="display: flex;">
       <header>
         <div>
           <h2>Hospital Center</h2>
           <p style="color: #969696">Community hospital located at downtown</p>
         </div>
       </header>
-      <div class="main-page-content">
+      <div class="main-page-content" style="display: flex">
         <div style="display: flex; flex-direction: column; row-gap: 30px;">
           <div class="dashboard-card" style="padding: 30px 0;">
             <div style="display: flex; justify-content: space-between; align-items: center; padding: 0px 30px; margin-bottom: 30px;">
@@ -134,7 +136,7 @@
                 </div>
               </div>
               <div style="background-color: #404040; border-radius: 9999px; overflow: auto;">
-                <div style="width: 80%; background-color: green; padding: 4px 0; text-align: center;">80%</div>
+                <div style="width: 60%; background-color: green; padding: 4px 0; text-align: center;">60%</div>
               </div>
             </div>
           </div>
@@ -143,18 +145,29 @@
               <h4>To-Do</h4>
               <div style="display: flex; align-items: center; justify-content: end; column-gap: 20px;">
                 <div style="display: flex; align-items: center; column-gap: 10px;">
-                  <span class="material-icons-round">search</span>
+                  <span class="material-symbols-rounded">search</span>
                   <input type="text" placeholder="Search To-Do's by name" style="width: 100%;">
                 </div>
-                <span class="material-icons-round">add</span>
+                <span class="material-symbols-rounded">add</span>
               </div>
             </div>
             <div style="display: flex; flex-direction: column; padding: 10px 30px; row-gap: 20px;">
               <div class="todo-item">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                   <div style="display: flex; column-gap: 15px; align-items: center;">
-                    <span class="material-icons-round" style="padding: 10px; background-color: #686868; border-radius: 10px;">construction</span>
+                    <span class="material-symbols-rounded" style="padding: 10px; background-color: #686868; border-radius: 10px;">construction</span>
                     <p>Make anything here as you want, even something longer.</p>
+                  </div>
+                  <p style="text-wrap: nowrap; margin-left: 10px;">Fri, 20 sep</p>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; padding: 10px 30px; row-gap: 20px;">
+              <div class="todo-item">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <div style="display: flex; column-gap: 15px; align-items: center;">
+                    <span class="material-symbols-rounded" style="padding: 10px; background-color: #686868; border-radius: 10px;">construction</span>
+                    <p>Chama tu eres la mejor de todas las cracks.</p>
                   </div>
                   <p style="text-wrap: nowrap; margin-left: 10px;">Fri, 20 sep</p>
                 </div>
@@ -163,8 +176,106 @@
           </div>
         </div>
         <div id="viewer-container" class="dashboard-card"></div>
+    </div>
+    <div class="page" id="users-page" style="display: flex;">
+      <dialog id="new-user-modal">
+        <form>
+          <h2>New user</h2>
+          <div class="input-list">
+            <div class="form-field-container">
+              <label><span class="material-symbols-rounded">home</span>Name</label>
+              <input type="text" placeholder="Type your complete name.">
+              <p style="color: gray; font-size: var(--font-sm); margin-top: 5px; font-style: italic;"></p>
+            </div>
+              <div class="form-field-container">
+                <label><span class="material-symbols-rounded">photo_camera</span>Personal photo</label>
+                <input type="file" accept="image/*" placeholder="Upload you picture.">
+                <p style="color: gray; font-size: var(--font-sm); margin-top: 5px; font-style: italic;"></p>
+              </div>
+            <div class="form-field-container">
+              <label><span class="material-symbols-rounded">alternate_email</span>E-mail</label>
+              <input type="text" placeholder="Type your e-mail adress.">
+              <p style="color: gray; font-size: var(--font-sm); margin-top: 5px; font-style: italic;"></p>
+            </div>
+            <div class="form-field-container">
+              <label><span class="material-symbols-rounded">person</span>Role</label>
+              <select>
+                <option>Architect</option>
+                <option>Engineer</option>
+                <option>Client</option>
+                <option>Constructor</option>
+              </select>
+            </div>
+            <div class="form-field-container">
+              <label><span class="material-symbols-rounded">person</span>Company</label>
+              <select>
+                <option>Chama&Asociates</option>
+                <option>ATRUP</option>
+                <option>The Park</option>
+                <option>ACRConstruction</option>
+              </select>
+            </div>
+            <div style="display: flex;margin: 10px 0px 10px auto; column-gap: 10px;">
+              <button style="background-color: transparent;">Cancel</button>
+              <button style="background-color: rgb(18, 145, 18)">Accept</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+      <header>
+        <h2>Users</h2>
+        <div>
+          <button id = "new-user-btn"><span class="material-symbols-rounded">add</span>New User</button>
+        </div>
+      </header>
+      <div id ="users-list">
+        <div class ="user-card">
+          <div class="card-header">
+            <p style="background-color: #ca8134; padding: 10px; border-radius: 8px; aspect-ratio: 1;">TW</p>
+          <div>
+            <h5>User manager</h5>
+            <p>Manage you team members and their accounts.</p>
+          </div>    
+        </div>
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>User Name</th>
+              <th>Email</th>
+              <th>Access</th>
+              <th>Last Active</th>
+              <th>Date Added</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class = "user-name">Thomas Wainberg</td>
+              <td class ="user-email">twainberg@gmail.com</td>
+              <td>
+                <span class="badge badge-admin">Admin</span>
+                <span class="badge badge-edit">Edit</span>
+                <span class="badge badge-read">Read</span>
+              </td>
+              <td>Oct 21, 2024</td>
+              <td>Jul 25, 2023</td>
+            </tr>
+            <tr>
+              <td class = "user-name">Camila Costa</td>
+              <td class ="user-email">camilacosta@gmail.com</td>
+              <td>
+                <span class="badge badge-edit">Edit</span>
+                <span class="badge badge-read">Read</span>
+              </td>
+              <td>Oct 28, 2024</td>
+              <td>Nov 22, 2022</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
+    <div class="page" id="users"></div>
+    <div id="error-container"></div> <!-- Nuevo contenedor para los mensajes de error -->
   </main>
+  <script type="module" src="./src/index.ts"></script>
 </body>
 </html>
