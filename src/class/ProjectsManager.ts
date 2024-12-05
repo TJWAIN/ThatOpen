@@ -75,8 +75,19 @@ export class ProjectsManager {
       date.textContent = dateObj.toDateString()
     }
     const progress = detailsPage.querySelector("[data-project-info='progress']")
-    if (progress)
+    if (progress) {
       progress.textContent = `${project.progress * 100}%`
+    }
+
+    const initials = detailsPage.querySelector("data-project-info)='initials']")
+    if (initials) {
+      const initialsText = project.name
+        .split(" ")
+        .map(word=>word[0].toUpperCase())
+        .join("")
+      initials.textContent = initialsText
+    }
+
   }
   
 
