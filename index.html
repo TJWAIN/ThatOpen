@@ -60,6 +60,41 @@
           </div>
         </form>
       </dialog>
+      <dialog id="edit-project-modal">
+        <form id="edit-project-form">
+          <h2>Edit Project</h2>
+          <div>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" required>
+          </div>
+          <div>
+            <label for="description">Description</label>
+            <textarea name="description" id="description"></textarea>
+          </div>
+          <div>
+            <label for="status">Status</label>
+            <select name="status" id="status">
+              <option value="pending">Pending</option>
+              <option value="active">Active</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+          <div>
+            <label for="cost">Cost</label>
+            <input type="number" name="cost" id="cost">
+          </div>
+          <div>
+            <label for="finishDate">Finish Date</label>
+            <input type="date" name="finishDate" id="finishDate">
+          </div>
+          <div>
+            <label for="progress">Progress</label>
+            <input type="range" name="progress" id="progress" min="0" max="100">
+          </div>
+          <button type="submit">Save</button>
+          <button type="button" onclick="document.getElementById('edit-project-modal').close()">Cancel</button>
+        </form>
+      </dialog>
       <header>
         <h2>Projects</h2>
         <div style="display: flex; align-items: center; column-gap: 15px;">
@@ -71,7 +106,7 @@
       <div id="projects-list">
         <div class="project-card">
           <div class="card-header">
-            <p name="initials" style="background-color: #ca8134; padding: 10px; border-radius: 8px; aspect-ratio: 1;">HC</p>
+            <p data-project-info="initials" style="background-color: #ca8134; padding: 10px; border-radius: 8px; aspect-ratio: 1;">HC</p>
             <div>
               <h5>Project Name</h5>
               <p>Project Description Goes Here...</p>
@@ -110,7 +145,7 @@
           <div class="dashboard-card" style="padding: 30px 0;">
             <div style="display: flex; justify-content: space-between; align-items: center; padding: 0px 30px; margin-bottom: 30px;">
               <p data-project-info="initials" style="font-size: 20px; background-color: #ca8134; aspect-ratio: 1; border-radius: 100%; padding: 12px;">HC</p>
-              <button class="btn-secondary"><p style="width: 100%;">Edit</p></button>
+              <button id="edit-project-details-btn" class="btn-secondary"><p style="width: 100%;">Edit</p></button>
             </div>
             <div style="padding: 0 30px;">
               <div>

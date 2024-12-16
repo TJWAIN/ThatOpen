@@ -12,15 +12,15 @@ function showModal(id: string) {
 }
 
 function toggleModal(id: string, show: boolean) {
-  const modal = document.getElementById(id);
+  const modal = document.getElementById(id)
   if (modal && modal instanceof HTMLDialogElement) {
     if (show) {
-      modal.showModal();
+      modal.showModal()
     } else {
-      modal.close();
+      modal.close()
     }
   } else {
-    console.warn("The provided modal wasn't found or is not a dialog element. ID: ", id);
+    console.warn("The provided modal wasn't found or is not a dialog element. ID: ", id)
   }
 }
 
@@ -55,7 +55,7 @@ if (projectForm && projectForm instanceof HTMLFormElement) {
       console.log(project)
     } catch (error) {
       projectForm.reset()
-      const errordisp = new ErrorMessage(document.getElementById("error-container") as HTMLElement, error);
+      const errordisp = new ErrorMessage(document.getElementById("error-container") as HTMLElement, error)
       errordisp.showError()
       console.log(error)
     }
@@ -76,4 +76,57 @@ if (importProjectsBtn) {
   importProjectsBtn.addEventListener("click", () => {
     projectsManager.importFromJSON()
   })
+}
+
+const editProjectBtn = document.getElementById("edit-project-details-btn");
+if (editProjectBtn) {
+  editProjectBtn.addEventListener("click", () => {
+    showModal("edit-project-modal"); // Abre el modal
+  });
+} else {
+  console.warn("Edit project button was not found");
+}
+
+// Obtener el formulario de edición
+const editProjectForm = document.getElementById("edit-project-form") as HTMLFormElement;
+if (editProjectForm) {
+  editProjectForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Obtener los datos del formulario
+    const formData = new FormData(editProjectForm);
+    const projectData = {
+      name: formData.get("name") as string,
+      description: formData.get("description") as string,
+      status: formData.get("status") as string,
+      userRole: formData.get("userRole") as string,
+      finishDate: new Date(formData.get("finishDate") as string),
+    };
+
+    // Actualizar el proyecto actual
+    const projectId = editProjectForm.dataset.projectId; // ID del proyecto actual
+    if (!projectId) {
+      console.warn("No project ID found for editing.");
+      return;
+    }
+
+    const project = projectsManager.getProject(projectId); // Obtener el proyecto por ID
+    if (!project) {
+      console.warn("Project not found:", projectId);
+      return;
+    }
+
+    // Actualizar los campos del proyecto
+    Object.assign(project, projectData);
+
+    // Actualizar la UI de la tarjeta del proyecto
+    projectsManager.updateProjectDetailsUI(project);
+
+    // Cerrar el modal
+    toggleModal("edit-project-modal", false);
+
+    console.log("Project updated:", project);
+  });
+} else {
+  console.warn("Edit project form was not found.");
 }
